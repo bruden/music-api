@@ -1,4 +1,4 @@
-﻿package team.burden.music.api;
+package team.burden.music.api;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
