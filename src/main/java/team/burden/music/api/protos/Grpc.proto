@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "team.burden.music.api.protos";
+
+import "Music.proto";
+
+service GrpcService {
+    rpc addSong(AddSongRequest) returns (AddSongResponse) {}
+
+    rpc queryAllSongs(QueryAllSongsRequest) returns (QueryAllSongsResponse) {}
+
+    rpc querySong(QuerySongRequest) returns (QuerySongResponse) {}
+}
+
+message AddSongRequest {
+    Song song = 1;
+}
+
+message AddSongResponse {
+    bool result = 1;
+}
+
+message QuerySongRequest {
+    string title = 1;
+}
+
+message QuerySongResponse {
+    Song song = 1;
+}
+
+message QueryAllSongsRequest {
+}
+
+message QueryAllSongsResponse {
+    repeated SongWithoutTones songs = 1;
+}
+
+message SongWithoutTones {
+    string title = 1;
+    string creator = 2;
+}

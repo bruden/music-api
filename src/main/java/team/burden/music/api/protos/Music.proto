@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "team.burden.music.api.protos";
+
+message Song {
+    string title = 1;
+    string creator = 2;
+    int32 duration = 3;
+    bytes tones = 4;
+}
+
+message Tones {
+    repeated Tone tones = 1;
+}
+
+message Tone {
+    repeated int32 tone = 1;
+    int32 duration = 2;
+}

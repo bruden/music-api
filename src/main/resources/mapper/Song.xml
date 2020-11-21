@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.burden.music.api.dao.SongDao">
+
+    <insert id="addSong" parameterType="team.burden.music.api.model.Song">
+        insert into song(`title`, `creator`, `druation`, `tones`) values(#{title}, #{creator}, #{druation}, #{tones})
+    </insert>
+
+    <select id="getSongs" resultType="team.burden.music.api.model.Song">
+        select `title`, `creator`, `druation` from song
+    </select>
+
+    <select id="getSong" parameterType="string" resultType="team.burden.music.api.model.Song">
+        select `title`, `creator`, `druation`, `tones` from song where `title`=#{value}
+    </select>
+
+</mapper>
