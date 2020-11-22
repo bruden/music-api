@@ -20,7 +20,7 @@ PRAGMA foreign_keys = OFF;
 CREATE TABLE "song" (
 "title"  TEXT NOT NULL,
 "creator"  TEXT NOT NULL,
-"druation"  INTEGER NOT NULL,
+"duration"  INTEGER NOT NULL,
 "tones"  BLOB NOT NULL,
 PRIMARY KEY ("title")
 );

@@ -3,15 +3,15 @@
 <mapper namespace="team.burden.music.api.dao.SongDao">
 
     <insert id="addSong" parameterType="team.burden.music.api.model.Song">
-        insert into song(`title`, `creator`, `druation`, `tones`) values(#{title}, #{creator}, #{druation}, #{tones})
+        insert into song(`title`, `creator`, `duration`, `tones`) values(#{title}, #{creator}, #{duration}, #{tones})
     </insert>
 
     <select id="getSongs" resultType="team.burden.music.api.model.Song">
-        select `title`, `creator`, `druation` from song
+        select `title`, `creator`, `duration` from song
     </select>
 
     <select id="getSong" parameterType="string" resultType="team.burden.music.api.model.Song">
-        select `title`, `creator`, `druation`, `tones` from song where `title`=#{value}
+        select `title`, `creator`, `duration`, `tones` from song where `title`=#{value}
     </select>
 
 </mapper>
