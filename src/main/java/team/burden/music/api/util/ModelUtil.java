@@ -15,7 +15,7 @@ public class ModelUtil {
         Song s = new Song();
         s.setTitle(song.getTitle());
         s.setCreator(song.getCreator());
-        s.setDruation(song.getDuration());
+        s.setDuration(song.getDuration());
         s.setTones(song.getTones().toByteArray());
         return s;
     }

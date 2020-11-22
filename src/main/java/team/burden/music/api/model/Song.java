@@ -17,7 +17,7 @@ public class Song {
 
     private String title;
     private String creator;
-    private int druation;
+    private int duration;
     private Object tones;
 
 }

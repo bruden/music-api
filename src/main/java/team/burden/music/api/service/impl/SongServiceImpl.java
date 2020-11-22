@@ -61,7 +61,7 @@ public class SongServiceImpl implements SongService {
             return Music.Song.newBuilder()
                     .setTitle(song.getTitle())
                     .setCreator(song.getCreator())
-                    .setDuration(song.getDruation())
+                    .setDuration(song.getDuration())
                     .setTones(ByteString.copyFrom((byte[]) song.getTones()))
                     .build();
         }
