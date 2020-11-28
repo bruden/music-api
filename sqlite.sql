@@ -9,7 +9,7 @@ Target Server Type    : SQLite
 Target Server Version : 30714
 File Encoding         : 65001
 
-Date: 2020-11-21 19:18:17
+Date: 2020-11-28 20:04:24
 */
 
 PRAGMA foreign_keys = OFF;
@@ -20,7 +20,9 @@ PRAGMA foreign_keys = OFF;
 CREATE TABLE "song" (
 "title"  TEXT NOT NULL,
 "creator"  TEXT NOT NULL,
+"createTime"  INTEGER NOT NULL,
+"downloadCount"  INTEGER NOT NULL,
 "duration"  INTEGER NOT NULL,
 "tones"  BLOB NOT NULL,
-PRIMARY KEY ("title")
+PRIMARY KEY ("title" ASC)
 );
