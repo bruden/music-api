@@ -1,6 +1,6 @@
 package team.burden.music.api.service;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 import team.burden.music.api.protos.Grpc;
 import team.burden.music.api.protos.Music;
 

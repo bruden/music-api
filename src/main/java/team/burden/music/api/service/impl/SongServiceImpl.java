@@ -1,7 +1,7 @@
 package team.burden.music.api.service.impl;
 
 import com.google.protobuf.ByteString;
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -63,7 +63,7 @@ public class SongServiceImpl implements SongService {
                     .build());
         }
         int count = songDao.getCount();
-        return new Pair<>(result, count);
+        return Pair.of(result, count);
     }
 
     @Override

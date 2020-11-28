@@ -1,6 +1,6 @@
 protobuf-version=3.13.0
 protoc-gen-grpc-java-version=1.33.1
-version=0.1.0
+version=0.2.0
 pwd=$(shell pwd)
 
 pb:

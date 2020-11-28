@@ -13,7 +13,8 @@ RUN apt-get update && \
     make build
 
 FROM java:8
-COPY --from=builder /sqlite/sqlite.db /music/data/sqlite/sqlite.db
+COPY --from=builder /sqlite/sqlite.db /music/sqlite/sqlite.db
+COPY --from=builder /music/docker/start.sh /music/start.sh
 COPY --from=builder /music/target/music-api.jar /music/music-api.jar
 WORKDIR /music
-CMD ["java", "-jar", "music-api.jar"]
+CMD ["bash", "start.sh"]

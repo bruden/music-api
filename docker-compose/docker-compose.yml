@@ -6,9 +6,6 @@ services:
     container_name: music-api
     volumes:
     - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
-    - music-api-data:/music/data
+    - ../data:/music/data
     ports:
     - '8080:9090'
-
-volumes:
-  music-api-data: {}
