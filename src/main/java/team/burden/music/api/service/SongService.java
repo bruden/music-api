@@ -1,5 +1,6 @@
 package team.burden.music.api.service;
 
+import javafx.util.Pair;
 import team.burden.music.api.protos.Grpc;
 import team.burden.music.api.protos.Music;
 
@@ -15,7 +16,7 @@ public interface SongService {
 
     boolean addSong(Music.Song song);
 
-    List<Grpc.SongWithoutTones> getSongs();
+    Pair<List<Grpc.SongWithoutTones>, Integer> getSongs(String text, int offset, int size);
 
     Music.Song getSong(String title);
 

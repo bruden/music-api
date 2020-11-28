@@ -2313,30 +2313,55 @@ public final class Grpc {
 
   }
 
-  public interface QueryAllSongsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:QueryAllSongsRequest)
+  public interface QuerySongsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:QuerySongsRequest)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 offset = 1;</code>
+     * @return The offset.
+     */
+    int getOffset();
+
+    /**
+     * <code>int32 size = 2;</code>
+     * @return The size.
+     */
+    int getSize();
+
+    /**
+     * <code>string text = 3;</code>
+     * @return The text.
+     */
+    java.lang.String getText();
+    /**
+     * <code>string text = 3;</code>
+     * @return The bytes for text.
+     */
+    com.google.protobuf.ByteString
+        getTextBytes();
   }
   /**
-   * Protobuf type {@code QueryAllSongsRequest}
+   * Protobuf type {@code QuerySongsRequest}
    */
-  public static final class QueryAllSongsRequest extends
+  public static final class QuerySongsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:QueryAllSongsRequest)
-      QueryAllSongsRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:QuerySongsRequest)
+      QuerySongsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use QueryAllSongsRequest.newBuilder() to construct.
-    private QueryAllSongsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use QuerySongsRequest.newBuilder() to construct.
+    private QuerySongsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private QueryAllSongsRequest() {
+    private QuerySongsRequest() {
+      text_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new QueryAllSongsRequest();
+      return new QuerySongsRequest();
     }
 
     @java.lang.Override
@@ -2344,7 +2369,7 @@ public final class Grpc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private QueryAllSongsRequest(
+    private QuerySongsRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2362,6 +2387,22 @@ public final class Grpc {
             case 0:
               done = true;
               break;
+            case 8: {
+
+              offset_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              size_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              text_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2383,15 +2424,75 @@ public final class Grpc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsRequest_descriptor;
+      return team.burden.music.api.protos.Grpc.internal_static_QuerySongsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsRequest_fieldAccessorTable
+      return team.burden.music.api.protos.Grpc.internal_static_QuerySongsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              team.burden.music.api.protos.Grpc.QueryAllSongsRequest.class, team.burden.music.api.protos.Grpc.QueryAllSongsRequest.Builder.class);
+              team.burden.music.api.protos.Grpc.QuerySongsRequest.class, team.burden.music.api.protos.Grpc.QuerySongsRequest.Builder.class);
+    }
+
+    public static final int OFFSET_FIELD_NUMBER = 1;
+    private int offset_;
+    /**
+     * <code>int32 offset = 1;</code>
+     * @return The offset.
+     */
+    @java.lang.Override
+    public int getOffset() {
+      return offset_;
+    }
+
+    public static final int SIZE_FIELD_NUMBER = 2;
+    private int size_;
+    /**
+     * <code>int32 size = 2;</code>
+     * @return The size.
+     */
+    @java.lang.Override
+    public int getSize() {
+      return size_;
+    }
+
+    public static final int TEXT_FIELD_NUMBER = 3;
+    private volatile java.lang.Object text_;
+    /**
+     * <code>string text = 3;</code>
+     * @return The text.
+     */
+    @java.lang.Override
+    public java.lang.String getText() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        text_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string text = 3;</code>
+     * @return The bytes for text.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTextBytes() {
+      java.lang.Object ref = text_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        text_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2408,6 +2509,15 @@ public final class Grpc {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (offset_ != 0) {
+        output.writeInt32(1, offset_);
+      }
+      if (size_ != 0) {
+        output.writeInt32(2, size_);
+      }
+      if (!getTextBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, text_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2417,6 +2527,17 @@ public final class Grpc {
       if (size != -1) return size;
 
       size = 0;
+      if (offset_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, offset_);
+      }
+      if (size_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, size_);
+      }
+      if (!getTextBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, text_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2427,11 +2548,17 @@ public final class Grpc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof team.burden.music.api.protos.Grpc.QueryAllSongsRequest)) {
+      if (!(obj instanceof team.burden.music.api.protos.Grpc.QuerySongsRequest)) {
         return super.equals(obj);
       }
-      team.burden.music.api.protos.Grpc.QueryAllSongsRequest other = (team.burden.music.api.protos.Grpc.QueryAllSongsRequest) obj;
+      team.burden.music.api.protos.Grpc.QuerySongsRequest other = (team.burden.music.api.protos.Grpc.QuerySongsRequest) obj;
 
+      if (getOffset()
+          != other.getOffset()) return false;
+      if (getSize()
+          != other.getSize()) return false;
+      if (!getText()
+          .equals(other.getText())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2443,74 +2570,80 @@ public final class Grpc {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + OFFSET_FIELD_NUMBER;
+      hash = (53 * hash) + getOffset();
+      hash = (37 * hash) + SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getSize();
+      hash = (37 * hash) + TEXT_FIELD_NUMBER;
+      hash = (53 * hash) + getText().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(byte[] data)
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(java.io.InputStream input)
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseDelimitedFrom(java.io.InputStream input)
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseDelimitedFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2523,7 +2656,7 @@ public final class Grpc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(team.burden.music.api.protos.Grpc.QueryAllSongsRequest prototype) {
+    public static Builder newBuilder(team.burden.music.api.protos.Grpc.QuerySongsRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2539,26 +2672,26 @@ public final class Grpc {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryAllSongsRequest}
+     * Protobuf type {@code QuerySongsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:QueryAllSongsRequest)
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:QuerySongsRequest)
+        team.burden.music.api.protos.Grpc.QuerySongsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsRequest_descriptor;
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsRequest_fieldAccessorTable
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                team.burden.music.api.protos.Grpc.QueryAllSongsRequest.class, team.burden.music.api.protos.Grpc.QueryAllSongsRequest.Builder.class);
+                team.burden.music.api.protos.Grpc.QuerySongsRequest.class, team.burden.music.api.protos.Grpc.QuerySongsRequest.Builder.class);
       }
 
-      // Construct using team.burden.music.api.protos.Grpc.QueryAllSongsRequest.newBuilder()
+      // Construct using team.burden.music.api.protos.Grpc.QuerySongsRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2576,23 +2709,29 @@ public final class Grpc {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        offset_ = 0;
+
+        size_ = 0;
+
+        text_ = "";
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsRequest_descriptor;
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsRequest_descriptor;
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsRequest getDefaultInstanceForType() {
-        return team.burden.music.api.protos.Grpc.QueryAllSongsRequest.getDefaultInstance();
+      public team.burden.music.api.protos.Grpc.QuerySongsRequest getDefaultInstanceForType() {
+        return team.burden.music.api.protos.Grpc.QuerySongsRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsRequest build() {
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequest result = buildPartial();
+      public team.burden.music.api.protos.Grpc.QuerySongsRequest build() {
+        team.burden.music.api.protos.Grpc.QuerySongsRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2600,8 +2739,11 @@ public final class Grpc {
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsRequest buildPartial() {
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequest result = new team.burden.music.api.protos.Grpc.QueryAllSongsRequest(this);
+      public team.burden.music.api.protos.Grpc.QuerySongsRequest buildPartial() {
+        team.burden.music.api.protos.Grpc.QuerySongsRequest result = new team.burden.music.api.protos.Grpc.QuerySongsRequest(this);
+        result.offset_ = offset_;
+        result.size_ = size_;
+        result.text_ = text_;
         onBuilt();
         return result;
       }
@@ -2640,16 +2782,26 @@ public final class Grpc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof team.burden.music.api.protos.Grpc.QueryAllSongsRequest) {
-          return mergeFrom((team.burden.music.api.protos.Grpc.QueryAllSongsRequest)other);
+        if (other instanceof team.burden.music.api.protos.Grpc.QuerySongsRequest) {
+          return mergeFrom((team.burden.music.api.protos.Grpc.QuerySongsRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(team.burden.music.api.protos.Grpc.QueryAllSongsRequest other) {
-        if (other == team.burden.music.api.protos.Grpc.QueryAllSongsRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(team.burden.music.api.protos.Grpc.QuerySongsRequest other) {
+        if (other == team.burden.music.api.protos.Grpc.QuerySongsRequest.getDefaultInstance()) return this;
+        if (other.getOffset() != 0) {
+          setOffset(other.getOffset());
+        }
+        if (other.getSize() != 0) {
+          setSize(other.getSize());
+        }
+        if (!other.getText().isEmpty()) {
+          text_ = other.text_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2665,17 +2817,155 @@ public final class Grpc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequest parsedMessage = null;
+        team.burden.music.api.protos.Grpc.QuerySongsRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (team.burden.music.api.protos.Grpc.QueryAllSongsRequest) e.getUnfinishedMessage();
+          parsedMessage = (team.burden.music.api.protos.Grpc.QuerySongsRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private int offset_ ;
+      /**
+       * <code>int32 offset = 1;</code>
+       * @return The offset.
+       */
+      @java.lang.Override
+      public int getOffset() {
+        return offset_;
+      }
+      /**
+       * <code>int32 offset = 1;</code>
+       * @param value The offset to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOffset(int value) {
+        
+        offset_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 offset = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOffset() {
+        
+        offset_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int size_ ;
+      /**
+       * <code>int32 size = 2;</code>
+       * @return The size.
+       */
+      @java.lang.Override
+      public int getSize() {
+        return size_;
+      }
+      /**
+       * <code>int32 size = 2;</code>
+       * @param value The size to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSize(int value) {
+        
+        size_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 size = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSize() {
+        
+        size_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object text_ = "";
+      /**
+       * <code>string text = 3;</code>
+       * @return The text.
+       */
+      public java.lang.String getText() {
+        java.lang.Object ref = text_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          text_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string text = 3;</code>
+       * @return The bytes for text.
+       */
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        java.lang.Object ref = text_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          text_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string text = 3;</code>
+       * @param value The text to set.
+       * @return This builder for chaining.
+       */
+      public Builder setText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        text_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string text = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearText() {
+        
+        text_ = getDefaultInstance().getText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string text = 3;</code>
+       * @param value The bytes for text to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        text_ = value;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -2691,48 +2981,48 @@ public final class Grpc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:QueryAllSongsRequest)
+      // @@protoc_insertion_point(builder_scope:QuerySongsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:QueryAllSongsRequest)
-    private static final team.burden.music.api.protos.Grpc.QueryAllSongsRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:QuerySongsRequest)
+    private static final team.burden.music.api.protos.Grpc.QuerySongsRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new team.burden.music.api.protos.Grpc.QueryAllSongsRequest();
+      DEFAULT_INSTANCE = new team.burden.music.api.protos.Grpc.QuerySongsRequest();
     }
 
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsRequest getDefaultInstance() {
+    public static team.burden.music.api.protos.Grpc.QuerySongsRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<QueryAllSongsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<QueryAllSongsRequest>() {
+    private static final com.google.protobuf.Parser<QuerySongsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QuerySongsRequest>() {
       @java.lang.Override
-      public QueryAllSongsRequest parsePartialFrom(
+      public QuerySongsRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new QueryAllSongsRequest(input, extensionRegistry);
+        return new QuerySongsRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<QueryAllSongsRequest> parser() {
+    public static com.google.protobuf.Parser<QuerySongsRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<QueryAllSongsRequest> getParserForType() {
+    public com.google.protobuf.Parser<QuerySongsRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public team.burden.music.api.protos.Grpc.QueryAllSongsRequest getDefaultInstanceForType() {
+    public team.burden.music.api.protos.Grpc.QuerySongsRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface QueryAllSongsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:QueryAllSongsResponse)
+  public interface QuerySongsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:QuerySongsResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2758,20 +3048,26 @@ public final class Grpc {
      */
     team.burden.music.api.protos.Grpc.SongWithoutTonesOrBuilder getSongsOrBuilder(
         int index);
+
+    /**
+     * <code>int32 count = 2;</code>
+     * @return The count.
+     */
+    int getCount();
   }
   /**
-   * Protobuf type {@code QueryAllSongsResponse}
+   * Protobuf type {@code QuerySongsResponse}
    */
-  public static final class QueryAllSongsResponse extends
+  public static final class QuerySongsResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:QueryAllSongsResponse)
-      QueryAllSongsResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:QuerySongsResponse)
+      QuerySongsResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use QueryAllSongsResponse.newBuilder() to construct.
-    private QueryAllSongsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use QuerySongsResponse.newBuilder() to construct.
+    private QuerySongsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private QueryAllSongsResponse() {
+    private QuerySongsResponse() {
       songs_ = java.util.Collections.emptyList();
     }
 
@@ -2779,7 +3075,7 @@ public final class Grpc {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new QueryAllSongsResponse();
+      return new QuerySongsResponse();
     }
 
     @java.lang.Override
@@ -2787,7 +3083,7 @@ public final class Grpc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private QueryAllSongsResponse(
+    private QuerySongsResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2815,6 +3111,11 @@ public final class Grpc {
                   input.readMessage(team.burden.music.api.protos.Grpc.SongWithoutTones.parser(), extensionRegistry));
               break;
             }
+            case 16: {
+
+              count_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2839,15 +3140,15 @@ public final class Grpc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsResponse_descriptor;
+      return team.burden.music.api.protos.Grpc.internal_static_QuerySongsResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsResponse_fieldAccessorTable
+      return team.burden.music.api.protos.Grpc.internal_static_QuerySongsResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              team.burden.music.api.protos.Grpc.QueryAllSongsResponse.class, team.burden.music.api.protos.Grpc.QueryAllSongsResponse.Builder.class);
+              team.burden.music.api.protos.Grpc.QuerySongsResponse.class, team.burden.music.api.protos.Grpc.QuerySongsResponse.Builder.class);
     }
 
     public static final int SONGS_FIELD_NUMBER = 1;
@@ -2890,6 +3191,17 @@ public final class Grpc {
       return songs_.get(index);
     }
 
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    /**
+     * <code>int32 count = 2;</code>
+     * @return The count.
+     */
+    @java.lang.Override
+    public int getCount() {
+      return count_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2907,6 +3219,9 @@ public final class Grpc {
       for (int i = 0; i < songs_.size(); i++) {
         output.writeMessage(1, songs_.get(i));
       }
+      if (count_ != 0) {
+        output.writeInt32(2, count_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2920,6 +3235,10 @@ public final class Grpc {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, songs_.get(i));
       }
+      if (count_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2930,13 +3249,15 @@ public final class Grpc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof team.burden.music.api.protos.Grpc.QueryAllSongsResponse)) {
+      if (!(obj instanceof team.burden.music.api.protos.Grpc.QuerySongsResponse)) {
         return super.equals(obj);
       }
-      team.burden.music.api.protos.Grpc.QueryAllSongsResponse other = (team.burden.music.api.protos.Grpc.QueryAllSongsResponse) obj;
+      team.burden.music.api.protos.Grpc.QuerySongsResponse other = (team.burden.music.api.protos.Grpc.QuerySongsResponse) obj;
 
       if (!getSongsList()
           .equals(other.getSongsList())) return false;
+      if (getCount()
+          != other.getCount()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2952,74 +3273,76 @@ public final class Grpc {
         hash = (37 * hash) + SONGS_FIELD_NUMBER;
         hash = (53 * hash) + getSongsList().hashCode();
       }
+      hash = (37 * hash) + COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getCount();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(byte[] data)
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(java.io.InputStream input)
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseDelimitedFrom(java.io.InputStream input)
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseDelimitedFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse parseFrom(
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3032,7 +3355,7 @@ public final class Grpc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(team.burden.music.api.protos.Grpc.QueryAllSongsResponse prototype) {
+    public static Builder newBuilder(team.burden.music.api.protos.Grpc.QuerySongsResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3048,26 +3371,26 @@ public final class Grpc {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryAllSongsResponse}
+     * Protobuf type {@code QuerySongsResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:QueryAllSongsResponse)
-        team.burden.music.api.protos.Grpc.QueryAllSongsResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:QuerySongsResponse)
+        team.burden.music.api.protos.Grpc.QuerySongsResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsResponse_descriptor;
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsResponse_fieldAccessorTable
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                team.burden.music.api.protos.Grpc.QueryAllSongsResponse.class, team.burden.music.api.protos.Grpc.QueryAllSongsResponse.Builder.class);
+                team.burden.music.api.protos.Grpc.QuerySongsResponse.class, team.burden.music.api.protos.Grpc.QuerySongsResponse.Builder.class);
       }
 
-      // Construct using team.burden.music.api.protos.Grpc.QueryAllSongsResponse.newBuilder()
+      // Construct using team.burden.music.api.protos.Grpc.QuerySongsResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3092,23 +3415,25 @@ public final class Grpc {
         } else {
           songsBuilder_.clear();
         }
+        count_ = 0;
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return team.burden.music.api.protos.Grpc.internal_static_QueryAllSongsResponse_descriptor;
+        return team.burden.music.api.protos.Grpc.internal_static_QuerySongsResponse_descriptor;
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsResponse getDefaultInstanceForType() {
-        return team.burden.music.api.protos.Grpc.QueryAllSongsResponse.getDefaultInstance();
+      public team.burden.music.api.protos.Grpc.QuerySongsResponse getDefaultInstanceForType() {
+        return team.burden.music.api.protos.Grpc.QuerySongsResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsResponse build() {
-        team.burden.music.api.protos.Grpc.QueryAllSongsResponse result = buildPartial();
+      public team.burden.music.api.protos.Grpc.QuerySongsResponse build() {
+        team.burden.music.api.protos.Grpc.QuerySongsResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3116,8 +3441,8 @@ public final class Grpc {
       }
 
       @java.lang.Override
-      public team.burden.music.api.protos.Grpc.QueryAllSongsResponse buildPartial() {
-        team.burden.music.api.protos.Grpc.QueryAllSongsResponse result = new team.burden.music.api.protos.Grpc.QueryAllSongsResponse(this);
+      public team.burden.music.api.protos.Grpc.QuerySongsResponse buildPartial() {
+        team.burden.music.api.protos.Grpc.QuerySongsResponse result = new team.burden.music.api.protos.Grpc.QuerySongsResponse(this);
         int from_bitField0_ = bitField0_;
         if (songsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -3128,6 +3453,7 @@ public final class Grpc {
         } else {
           result.songs_ = songsBuilder_.build();
         }
+        result.count_ = count_;
         onBuilt();
         return result;
       }
@@ -3166,16 +3492,16 @@ public final class Grpc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof team.burden.music.api.protos.Grpc.QueryAllSongsResponse) {
-          return mergeFrom((team.burden.music.api.protos.Grpc.QueryAllSongsResponse)other);
+        if (other instanceof team.burden.music.api.protos.Grpc.QuerySongsResponse) {
+          return mergeFrom((team.burden.music.api.protos.Grpc.QuerySongsResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(team.burden.music.api.protos.Grpc.QueryAllSongsResponse other) {
-        if (other == team.burden.music.api.protos.Grpc.QueryAllSongsResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(team.burden.music.api.protos.Grpc.QuerySongsResponse other) {
+        if (other == team.burden.music.api.protos.Grpc.QuerySongsResponse.getDefaultInstance()) return this;
         if (songsBuilder_ == null) {
           if (!other.songs_.isEmpty()) {
             if (songs_.isEmpty()) {
@@ -3202,6 +3528,9 @@ public final class Grpc {
             }
           }
         }
+        if (other.getCount() != 0) {
+          setCount(other.getCount());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3217,11 +3546,11 @@ public final class Grpc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        team.burden.music.api.protos.Grpc.QueryAllSongsResponse parsedMessage = null;
+        team.burden.music.api.protos.Grpc.QuerySongsResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (team.burden.music.api.protos.Grpc.QueryAllSongsResponse) e.getUnfinishedMessage();
+          parsedMessage = (team.burden.music.api.protos.Grpc.QuerySongsResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3471,6 +3800,37 @@ public final class Grpc {
         }
         return songsBuilder_;
       }
+
+      private int count_ ;
+      /**
+       * <code>int32 count = 2;</code>
+       * @return The count.
+       */
+      @java.lang.Override
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>int32 count = 2;</code>
+       * @param value The count to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCount(int value) {
+        
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 count = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCount() {
+        
+        count_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3484,41 +3844,41 @@ public final class Grpc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:QueryAllSongsResponse)
+      // @@protoc_insertion_point(builder_scope:QuerySongsResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:QueryAllSongsResponse)
-    private static final team.burden.music.api.protos.Grpc.QueryAllSongsResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:QuerySongsResponse)
+    private static final team.burden.music.api.protos.Grpc.QuerySongsResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new team.burden.music.api.protos.Grpc.QueryAllSongsResponse();
+      DEFAULT_INSTANCE = new team.burden.music.api.protos.Grpc.QuerySongsResponse();
     }
 
-    public static team.burden.music.api.protos.Grpc.QueryAllSongsResponse getDefaultInstance() {
+    public static team.burden.music.api.protos.Grpc.QuerySongsResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<QueryAllSongsResponse>
-        PARSER = new com.google.protobuf.AbstractParser<QueryAllSongsResponse>() {
+    private static final com.google.protobuf.Parser<QuerySongsResponse>
+        PARSER = new com.google.protobuf.AbstractParser<QuerySongsResponse>() {
       @java.lang.Override
-      public QueryAllSongsResponse parsePartialFrom(
+      public QuerySongsResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new QueryAllSongsResponse(input, extensionRegistry);
+        return new QuerySongsResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<QueryAllSongsResponse> parser() {
+    public static com.google.protobuf.Parser<QuerySongsResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<QueryAllSongsResponse> getParserForType() {
+    public com.google.protobuf.Parser<QuerySongsResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public team.burden.music.api.protos.Grpc.QueryAllSongsResponse getDefaultInstanceForType() {
+    public team.burden.music.api.protos.Grpc.QuerySongsResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3551,6 +3911,24 @@ public final class Grpc {
      */
     com.google.protobuf.ByteString
         getCreatorBytes();
+
+    /**
+     * <code>int64 createTime = 3;</code>
+     * @return The createTime.
+     */
+    long getCreateTime();
+
+    /**
+     * <code>int32 downloadCount = 4;</code>
+     * @return The downloadCount.
+     */
+    int getDownloadCount();
+
+    /**
+     * <code>int32 duration = 5;</code>
+     * @return The duration.
+     */
+    int getDuration();
   }
   /**
    * Protobuf type {@code SongWithoutTones}
@@ -3609,6 +3987,21 @@ public final class Grpc {
               java.lang.String s = input.readStringRequireUtf8();
 
               creator_ = s;
+              break;
+            }
+            case 24: {
+
+              createTime_ = input.readInt64();
+              break;
+            }
+            case 32: {
+
+              downloadCount_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              duration_ = input.readInt32();
               break;
             }
             default: {
@@ -3719,6 +4112,39 @@ public final class Grpc {
       }
     }
 
+    public static final int CREATETIME_FIELD_NUMBER = 3;
+    private long createTime_;
+    /**
+     * <code>int64 createTime = 3;</code>
+     * @return The createTime.
+     */
+    @java.lang.Override
+    public long getCreateTime() {
+      return createTime_;
+    }
+
+    public static final int DOWNLOADCOUNT_FIELD_NUMBER = 4;
+    private int downloadCount_;
+    /**
+     * <code>int32 downloadCount = 4;</code>
+     * @return The downloadCount.
+     */
+    @java.lang.Override
+    public int getDownloadCount() {
+      return downloadCount_;
+    }
+
+    public static final int DURATION_FIELD_NUMBER = 5;
+    private int duration_;
+    /**
+     * <code>int32 duration = 5;</code>
+     * @return The duration.
+     */
+    @java.lang.Override
+    public int getDuration() {
+      return duration_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3739,6 +4165,15 @@ public final class Grpc {
       if (!getCreatorBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, creator_);
       }
+      if (createTime_ != 0L) {
+        output.writeInt64(3, createTime_);
+      }
+      if (downloadCount_ != 0) {
+        output.writeInt32(4, downloadCount_);
+      }
+      if (duration_ != 0) {
+        output.writeInt32(5, duration_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3753,6 +4188,18 @@ public final class Grpc {
       }
       if (!getCreatorBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, creator_);
+      }
+      if (createTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, createTime_);
+      }
+      if (downloadCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, downloadCount_);
+      }
+      if (duration_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, duration_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3773,6 +4220,12 @@ public final class Grpc {
           .equals(other.getTitle())) return false;
       if (!getCreator()
           .equals(other.getCreator())) return false;
+      if (getCreateTime()
+          != other.getCreateTime()) return false;
+      if (getDownloadCount()
+          != other.getDownloadCount()) return false;
+      if (getDuration()
+          != other.getDuration()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3788,6 +4241,13 @@ public final class Grpc {
       hash = (53 * hash) + getTitle().hashCode();
       hash = (37 * hash) + CREATOR_FIELD_NUMBER;
       hash = (53 * hash) + getCreator().hashCode();
+      hash = (37 * hash) + CREATETIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCreateTime());
+      hash = (37 * hash) + DOWNLOADCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadCount();
+      hash = (37 * hash) + DURATION_FIELD_NUMBER;
+      hash = (53 * hash) + getDuration();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3925,6 +4385,12 @@ public final class Grpc {
 
         creator_ = "";
 
+        createTime_ = 0L;
+
+        downloadCount_ = 0;
+
+        duration_ = 0;
+
         return this;
       }
 
@@ -3953,6 +4419,9 @@ public final class Grpc {
         team.burden.music.api.protos.Grpc.SongWithoutTones result = new team.burden.music.api.protos.Grpc.SongWithoutTones(this);
         result.title_ = title_;
         result.creator_ = creator_;
+        result.createTime_ = createTime_;
+        result.downloadCount_ = downloadCount_;
+        result.duration_ = duration_;
         onBuilt();
         return result;
       }
@@ -4008,6 +4477,15 @@ public final class Grpc {
         if (!other.getCreator().isEmpty()) {
           creator_ = other.creator_;
           onChanged();
+        }
+        if (other.getCreateTime() != 0L) {
+          setCreateTime(other.getCreateTime());
+        }
+        if (other.getDownloadCount() != 0) {
+          setDownloadCount(other.getDownloadCount());
+        }
+        if (other.getDuration() != 0) {
+          setDuration(other.getDuration());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4189,6 +4667,99 @@ public final class Grpc {
         onChanged();
         return this;
       }
+
+      private long createTime_ ;
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @return The createTime.
+       */
+      @java.lang.Override
+      public long getCreateTime() {
+        return createTime_;
+      }
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @param value The createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTime(long value) {
+        
+        createTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreateTime() {
+        
+        createTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int downloadCount_ ;
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @return The downloadCount.
+       */
+      @java.lang.Override
+      public int getDownloadCount() {
+        return downloadCount_;
+      }
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @param value The downloadCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadCount(int value) {
+        
+        downloadCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadCount() {
+        
+        downloadCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int duration_ ;
+      /**
+       * <code>int32 duration = 5;</code>
+       * @return The duration.
+       */
+      @java.lang.Override
+      public int getDuration() {
+        return duration_;
+      }
+      /**
+       * <code>int32 duration = 5;</code>
+       * @param value The duration to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDuration(int value) {
+        
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 duration = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDuration() {
+        
+        duration_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4263,15 +4834,15 @@ public final class Grpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_QuerySongResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_QueryAllSongsRequest_descriptor;
+    internal_static_QuerySongsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_QueryAllSongsRequest_fieldAccessorTable;
+      internal_static_QuerySongsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_QueryAllSongsResponse_descriptor;
+    internal_static_QuerySongsResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_QueryAllSongsResponse_fieldAccessorTable;
+      internal_static_QuerySongsResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SongWithoutTones_descriptor;
   private static final 
@@ -4290,16 +4861,18 @@ public final class Grpc {
       "est\022\023\n\004song\030\001 \001(\0132\005.Song\"!\n\017AddSongRespo" +
       "nse\022\016\n\006result\030\001 \001(\010\"!\n\020QuerySongRequest\022" +
       "\r\n\005title\030\001 \001(\t\"(\n\021QuerySongResponse\022\023\n\004s" +
-      "ong\030\001 \001(\0132\005.Song\"\026\n\024QueryAllSongsRequest" +
-      "\"9\n\025QueryAllSongsResponse\022 \n\005songs\030\001 \003(\013" +
-      "2\021.SongWithoutTones\"2\n\020SongWithoutTones\022" +
-      "\r\n\005title\030\001 \001(\t\022\017\n\007creator\030\002 \001(\t2\265\001\n\013Grpc" +
-      "Service\022.\n\007addSong\022\017.AddSongRequest\032\020.Ad" +
-      "dSongResponse\"\000\022@\n\rqueryAllSongs\022\025.Query" +
-      "AllSongsRequest\032\026.QueryAllSongsResponse\"" +
-      "\000\0224\n\tquerySong\022\021.QuerySongRequest\032\022.Quer" +
-      "ySongResponse\"\000B\036\n\034team.burden.music.api" +
-      ".protosb\006proto3"
+      "ong\030\001 \001(\0132\005.Song\"?\n\021QuerySongsRequest\022\016\n" +
+      "\006offset\030\001 \001(\005\022\014\n\004size\030\002 \001(\005\022\014\n\004text\030\003 \001(" +
+      "\t\"E\n\022QuerySongsResponse\022 \n\005songs\030\001 \003(\0132\021" +
+      ".SongWithoutTones\022\r\n\005count\030\002 \001(\005\"o\n\020Song" +
+      "WithoutTones\022\r\n\005title\030\001 \001(\t\022\017\n\007creator\030\002" +
+      " \001(\t\022\022\n\ncreateTime\030\003 \001(\003\022\025\n\rdownloadCoun" +
+      "t\030\004 \001(\005\022\020\n\010duration\030\005 \001(\0052\254\001\n\013GrpcServic" +
+      "e\022.\n\007addSong\022\017.AddSongRequest\032\020.AddSongR" +
+      "esponse\"\000\0227\n\nquerySongs\022\022.QuerySongsRequ" +
+      "est\032\023.QuerySongsResponse\"\000\0224\n\tquerySong\022" +
+      "\021.QuerySongRequest\032\022.QuerySongResponse\"\000" +
+      "B\036\n\034team.burden.music.api.protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4330,24 +4903,24 @@ public final class Grpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_QuerySongResponse_descriptor,
         new java.lang.String[] { "Song", });
-    internal_static_QueryAllSongsRequest_descriptor =
+    internal_static_QuerySongsRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_QueryAllSongsRequest_fieldAccessorTable = new
+    internal_static_QuerySongsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_QueryAllSongsRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_QueryAllSongsResponse_descriptor =
+        internal_static_QuerySongsRequest_descriptor,
+        new java.lang.String[] { "Offset", "Size", "Text", });
+    internal_static_QuerySongsResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_QueryAllSongsResponse_fieldAccessorTable = new
+    internal_static_QuerySongsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_QueryAllSongsResponse_descriptor,
-        new java.lang.String[] { "Songs", });
+        internal_static_QuerySongsResponse_descriptor,
+        new java.lang.String[] { "Songs", "Count", });
     internal_static_SongWithoutTones_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_SongWithoutTones_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SongWithoutTones_descriptor,
-        new java.lang.String[] { "Title", "Creator", });
+        new java.lang.String[] { "Title", "Creator", "CreateTime", "DownloadCount", "Duration", });
     team.burden.music.api.protos.Music.getDescriptor();
   }
 

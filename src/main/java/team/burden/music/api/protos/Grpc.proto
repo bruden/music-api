@@ -7,7 +7,7 @@ import "Music.proto";
 service GrpcService {
     rpc addSong(AddSongRequest) returns (AddSongResponse) {}
 
-    rpc queryAllSongs(QueryAllSongsRequest) returns (QueryAllSongsResponse) {}
+    rpc querySongs(QuerySongsRequest) returns (QuerySongsResponse) {}
 
     rpc querySong(QuerySongRequest) returns (QuerySongResponse) {}
 }
@@ -28,14 +28,21 @@ message QuerySongResponse {
     Song song = 1;
 }
 
-message QueryAllSongsRequest {
+message QuerySongsRequest {
+    int32 offset = 1;
+    int32 size = 2;
+    string text = 3;
 }
 
-message QueryAllSongsResponse {
+message QuerySongsResponse {
     repeated SongWithoutTones songs = 1;
+    int32 count = 2;
 }
 
 message SongWithoutTones {
     string title = 1;
     string creator = 2;
+    int64 createTime = 3;
+    int32 downloadCount = 4;
+    int32 duration = 5;
 }

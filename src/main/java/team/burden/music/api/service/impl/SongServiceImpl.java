@@ -1,6 +1,7 @@
 package team.burden.music.api.service.impl;
 
 import com.google.protobuf.ByteString;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,9 @@ import team.burden.music.api.util.ModelUtil;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: music-api
@@ -33,6 +36,7 @@ public class SongServiceImpl implements SongService {
     public boolean addSong(Music.Song song) {
         try {
             Song s = ModelUtil.toModelSong(song);
+            s.setCreateTime(System.currentTimeMillis());
             songDao.addSong(s);
             return true;
         } catch (Exception e) {
@@ -42,25 +46,36 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public List<Grpc.SongWithoutTones> getSongs() {
-        List<Song> songs = songDao.getSongs();
+    public Pair<List<Grpc.SongWithoutTones>, Integer> getSongs(String text, int offset, int size) {
+        Map<String, Object> map = new HashMap<String, Object>() {{
+            put("offset", offset);
+            put("size", size);
+        }};
+        List<Song> songs = songDao.getSongs(map);
         List<Grpc.SongWithoutTones> result = new ArrayList<>();
         for (Song song : songs) {
             result.add(Grpc.SongWithoutTones.newBuilder()
                     .setTitle(song.getTitle())
                     .setCreator(song.getCreator())
+                    .setCreateTime(song.getCreateTime())
+                    .setDownloadCount(song.getDownloadCount())
+                    .setDuration(song.getDuration())
                     .build());
         }
-        return result;
+        int count = songDao.getCount();
+        return new Pair<>(result, count);
     }
 
     @Override
     public Music.Song getSong(String title) {
         Song song = songDao.getSong(title);
         if (song != null) {
+            songDao.addDownloadCount(song.getTitle());
             return Music.Song.newBuilder()
                     .setTitle(song.getTitle())
                     .setCreator(song.getCreator())
+                    .setCreateTime(song.getCreateTime())
+                    .setDownloadCount(song.getDownloadCount())
                     .setDuration(song.getDuration())
                     .setTones(ByteString.copyFrom((byte[]) song.getTones()))
                     .build();

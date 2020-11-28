@@ -1,6 +1,7 @@
 package team.burden.music.api.grpc;
 
 import io.grpc.stub.StreamObserver;
+import javafx.util.Pair;
 import org.lognet.springboot.grpc.GRpcService;
 import team.burden.music.api.protos.Grpc;
 import team.burden.music.api.protos.GrpcServiceGrpc;
@@ -8,6 +9,7 @@ import team.burden.music.api.protos.Music;
 import team.burden.music.api.service.SongService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @program: music-api
@@ -30,12 +32,13 @@ public class GrpcService extends GrpcServiceGrpc.GrpcServiceImplBase {
     }
 
     @Override
-    public void queryAllSongs(Grpc.QueryAllSongsRequest request, StreamObserver<Grpc.QueryAllSongsResponse> responseObserver) {
-        Grpc.QueryAllSongsResponse.Builder builder = Grpc.QueryAllSongsResponse.newBuilder();
-        for (Grpc.SongWithoutTones songWithoutTones : songService.getSongs()) {
+    public void querySongs(Grpc.QuerySongsRequest request, StreamObserver<Grpc.QuerySongsResponse> responseObserver) {
+        Pair<List<Grpc.SongWithoutTones>, Integer> result = songService.getSongs(request.getText(), request.getOffset(), request.getSize());
+        Grpc.QuerySongsResponse.Builder builder = Grpc.QuerySongsResponse.newBuilder().setCount(result.getValue());
+        for (Grpc.SongWithoutTones songWithoutTones : result.getKey()) {
             builder.addSongs(songWithoutTones);
         }
-        Grpc.QueryAllSongsResponse response = builder.build();
+        Grpc.QuerySongsResponse response = builder.build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }

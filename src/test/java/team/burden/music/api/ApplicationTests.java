@@ -35,8 +35,11 @@ public class ApplicationTests {
         ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
         GrpcServiceGrpc.GrpcServiceBlockingStub grpcServiceBlockingStub = GrpcServiceGrpc.newBlockingStub(managedChannel);
 
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequest request = team.burden.music.api.protos.Grpc.QueryAllSongsRequest.newBuilder().buildPartial();
-        System.out.println(grpcServiceBlockingStub.queryAllSongs(request));
+        team.burden.music.api.protos.Grpc.QuerySongsRequest request = team.burden.music.api.protos.Grpc.QuerySongsRequest.newBuilder()
+                .setOffset(0)
+                .setSize(10)
+                .buildPartial();
+        System.out.println(grpcServiceBlockingStub.querySongs(request));
     }
 
     @Test

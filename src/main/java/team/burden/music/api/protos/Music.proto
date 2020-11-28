@@ -5,8 +5,10 @@ option java_package = "team.burden.music.api.protos";
 message Song {
     string title = 1;
     string creator = 2;
-    int32 duration = 3;
-    bytes tones = 4;
+    int64 createTime = 3;
+    int32 downloadCount = 4;
+    int32 duration = 5;
+    bytes tones = 6;
 }
 
 message Tones {

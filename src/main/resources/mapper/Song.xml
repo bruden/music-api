@@ -3,15 +3,23 @@
 <mapper namespace="team.burden.music.api.dao.SongDao">
 
     <insert id="addSong" parameterType="team.burden.music.api.model.Song">
-        insert into song(`title`, `creator`, `duration`, `tones`) values(#{title}, #{creator}, #{duration}, #{tones})
+        insert into song(`title`, `creator`, `createTime`, `downloadCount`, `duration`, `tones`) values(#{title}, #{creator}, #{createTime}, 0, #{duration}, #{tones})
     </insert>
 
     <select id="getSongs" resultType="team.burden.music.api.model.Song">
-        select `title`, `creator`, `duration` from song
+        select `title`, `creator`, `createTime`, `downloadCount`, `duration` from song order by `createTime` desc limit #{offset}, #{size}
     </select>
 
+    <select id="getCount" resultType="int">
+        select count(*) from song
+    </select>
+
+    <update id="addDownloadCount" parameterType="string">
+        update `song` set `downloadCount` = `downloadCount` + 1 where `title`=#{value}
+    </update>
+
     <select id="getSong" parameterType="string" resultType="team.burden.music.api.model.Song">
-        select `title`, `creator`, `duration`, `tones` from song where `title`=#{value}
+        select `title`, `creator`, `createTime`, `downloadCount`, `duration`, `tones` from song where `title`=#{value}
     </select>
 
 </mapper>

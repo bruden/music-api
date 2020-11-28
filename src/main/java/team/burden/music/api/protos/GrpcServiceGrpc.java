@@ -58,35 +58,35 @@ public final class GrpcServiceGrpc {
     return getAddSongMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QueryAllSongsRequest,
-      team.burden.music.api.protos.Grpc.QueryAllSongsResponse> getQueryAllSongsMethod;
+  private static volatile io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QuerySongsRequest,
+      team.burden.music.api.protos.Grpc.QuerySongsResponse> getQuerySongsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "queryAllSongs",
-      requestType = team.burden.music.api.protos.Grpc.QueryAllSongsRequest.class,
-      responseType = team.burden.music.api.protos.Grpc.QueryAllSongsResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "querySongs",
+      requestType = team.burden.music.api.protos.Grpc.QuerySongsRequest.class,
+      responseType = team.burden.music.api.protos.Grpc.QuerySongsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QueryAllSongsRequest,
-      team.burden.music.api.protos.Grpc.QueryAllSongsResponse> getQueryAllSongsMethod() {
-    io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QueryAllSongsRequest, team.burden.music.api.protos.Grpc.QueryAllSongsResponse> getQueryAllSongsMethod;
-    if ((getQueryAllSongsMethod = GrpcServiceGrpc.getQueryAllSongsMethod) == null) {
+  public static io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QuerySongsRequest,
+      team.burden.music.api.protos.Grpc.QuerySongsResponse> getQuerySongsMethod() {
+    io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QuerySongsRequest, team.burden.music.api.protos.Grpc.QuerySongsResponse> getQuerySongsMethod;
+    if ((getQuerySongsMethod = GrpcServiceGrpc.getQuerySongsMethod) == null) {
       synchronized (GrpcServiceGrpc.class) {
-        if ((getQueryAllSongsMethod = GrpcServiceGrpc.getQueryAllSongsMethod) == null) {
-          GrpcServiceGrpc.getQueryAllSongsMethod = getQueryAllSongsMethod =
-              io.grpc.MethodDescriptor.<team.burden.music.api.protos.Grpc.QueryAllSongsRequest, team.burden.music.api.protos.Grpc.QueryAllSongsResponse>newBuilder()
+        if ((getQuerySongsMethod = GrpcServiceGrpc.getQuerySongsMethod) == null) {
+          GrpcServiceGrpc.getQuerySongsMethod = getQuerySongsMethod =
+              io.grpc.MethodDescriptor.<team.burden.music.api.protos.Grpc.QuerySongsRequest, team.burden.music.api.protos.Grpc.QuerySongsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "queryAllSongs"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "querySongs"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  team.burden.music.api.protos.Grpc.QueryAllSongsRequest.getDefaultInstance()))
+                  team.burden.music.api.protos.Grpc.QuerySongsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  team.burden.music.api.protos.Grpc.QueryAllSongsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new GrpcServiceMethodDescriptorSupplier("queryAllSongs"))
+                  team.burden.music.api.protos.Grpc.QuerySongsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GrpcServiceMethodDescriptorSupplier("querySongs"))
               .build();
         }
       }
     }
-    return getQueryAllSongsMethod;
+    return getQuerySongsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<team.burden.music.api.protos.Grpc.QuerySongRequest,
@@ -177,9 +177,9 @@ public final class GrpcServiceGrpc {
 
     /**
      */
-    public void queryAllSongs(team.burden.music.api.protos.Grpc.QueryAllSongsRequest request,
-        io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QueryAllSongsResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getQueryAllSongsMethod(), responseObserver);
+    public void querySongs(team.burden.music.api.protos.Grpc.QuerySongsRequest request,
+        io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QuerySongsResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getQuerySongsMethod(), responseObserver);
     }
 
     /**
@@ -199,12 +199,12 @@ public final class GrpcServiceGrpc {
                 team.burden.music.api.protos.Grpc.AddSongResponse>(
                   this, METHODID_ADD_SONG)))
           .addMethod(
-            getQueryAllSongsMethod(),
+            getQuerySongsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                team.burden.music.api.protos.Grpc.QueryAllSongsRequest,
-                team.burden.music.api.protos.Grpc.QueryAllSongsResponse>(
-                  this, METHODID_QUERY_ALL_SONGS)))
+                team.burden.music.api.protos.Grpc.QuerySongsRequest,
+                team.burden.music.api.protos.Grpc.QuerySongsResponse>(
+                  this, METHODID_QUERY_SONGS)))
           .addMethod(
             getQuerySongMethod(),
             asyncUnaryCall(
@@ -240,10 +240,10 @@ public final class GrpcServiceGrpc {
 
     /**
      */
-    public void queryAllSongs(team.burden.music.api.protos.Grpc.QueryAllSongsRequest request,
-        io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QueryAllSongsResponse> responseObserver) {
+    public void querySongs(team.burden.music.api.protos.Grpc.QuerySongsRequest request,
+        io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QuerySongsResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getQueryAllSongsMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getQuerySongsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -278,9 +278,9 @@ public final class GrpcServiceGrpc {
 
     /**
      */
-    public team.burden.music.api.protos.Grpc.QueryAllSongsResponse queryAllSongs(team.burden.music.api.protos.Grpc.QueryAllSongsRequest request) {
+    public team.burden.music.api.protos.Grpc.QuerySongsResponse querySongs(team.burden.music.api.protos.Grpc.QuerySongsRequest request) {
       return blockingUnaryCall(
-          getChannel(), getQueryAllSongsMethod(), getCallOptions(), request);
+          getChannel(), getQuerySongsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -315,10 +315,10 @@ public final class GrpcServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<team.burden.music.api.protos.Grpc.QueryAllSongsResponse> queryAllSongs(
-        team.burden.music.api.protos.Grpc.QueryAllSongsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<team.burden.music.api.protos.Grpc.QuerySongsResponse> querySongs(
+        team.burden.music.api.protos.Grpc.QuerySongsRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getQueryAllSongsMethod(), getCallOptions()), request);
+          getChannel().newCall(getQuerySongsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -331,7 +331,7 @@ public final class GrpcServiceGrpc {
   }
 
   private static final int METHODID_ADD_SONG = 0;
-  private static final int METHODID_QUERY_ALL_SONGS = 1;
+  private static final int METHODID_QUERY_SONGS = 1;
   private static final int METHODID_QUERY_SONG = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -355,9 +355,9 @@ public final class GrpcServiceGrpc {
           serviceImpl.addSong((team.burden.music.api.protos.Grpc.AddSongRequest) request,
               (io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.AddSongResponse>) responseObserver);
           break;
-        case METHODID_QUERY_ALL_SONGS:
-          serviceImpl.queryAllSongs((team.burden.music.api.protos.Grpc.QueryAllSongsRequest) request,
-              (io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QueryAllSongsResponse>) responseObserver);
+        case METHODID_QUERY_SONGS:
+          serviceImpl.querySongs((team.burden.music.api.protos.Grpc.QuerySongsRequest) request,
+              (io.grpc.stub.StreamObserver<team.burden.music.api.protos.Grpc.QuerySongsResponse>) responseObserver);
           break;
         case METHODID_QUERY_SONG:
           serviceImpl.querySong((team.burden.music.api.protos.Grpc.QuerySongRequest) request,
@@ -425,7 +425,7 @@ public final class GrpcServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new GrpcServiceFileDescriptorSupplier())
               .addMethod(getAddSongMethod())
-              .addMethod(getQueryAllSongsMethod())
+              .addMethod(getQuerySongsMethod())
               .addMethod(getQuerySongMethod())
               .build();
         }

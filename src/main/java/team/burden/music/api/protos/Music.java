@@ -43,13 +43,25 @@ public final class Music {
         getCreatorBytes();
 
     /**
-     * <code>int32 duration = 3;</code>
+     * <code>int64 createTime = 3;</code>
+     * @return The createTime.
+     */
+    long getCreateTime();
+
+    /**
+     * <code>int32 downloadCount = 4;</code>
+     * @return The downloadCount.
+     */
+    int getDownloadCount();
+
+    /**
+     * <code>int32 duration = 5;</code>
      * @return The duration.
      */
     int getDuration();
 
     /**
-     * <code>bytes tones = 4;</code>
+     * <code>bytes tones = 6;</code>
      * @return The tones.
      */
     com.google.protobuf.ByteString getTones();
@@ -116,10 +128,20 @@ public final class Music {
             }
             case 24: {
 
+              createTime_ = input.readInt64();
+              break;
+            }
+            case 32: {
+
+              downloadCount_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
               duration_ = input.readInt32();
               break;
             }
-            case 34: {
+            case 50: {
 
               tones_ = input.readBytes();
               break;
@@ -232,10 +254,32 @@ public final class Music {
       }
     }
 
-    public static final int DURATION_FIELD_NUMBER = 3;
+    public static final int CREATETIME_FIELD_NUMBER = 3;
+    private long createTime_;
+    /**
+     * <code>int64 createTime = 3;</code>
+     * @return The createTime.
+     */
+    @java.lang.Override
+    public long getCreateTime() {
+      return createTime_;
+    }
+
+    public static final int DOWNLOADCOUNT_FIELD_NUMBER = 4;
+    private int downloadCount_;
+    /**
+     * <code>int32 downloadCount = 4;</code>
+     * @return The downloadCount.
+     */
+    @java.lang.Override
+    public int getDownloadCount() {
+      return downloadCount_;
+    }
+
+    public static final int DURATION_FIELD_NUMBER = 5;
     private int duration_;
     /**
-     * <code>int32 duration = 3;</code>
+     * <code>int32 duration = 5;</code>
      * @return The duration.
      */
     @java.lang.Override
@@ -243,10 +287,10 @@ public final class Music {
       return duration_;
     }
 
-    public static final int TONES_FIELD_NUMBER = 4;
+    public static final int TONES_FIELD_NUMBER = 6;
     private com.google.protobuf.ByteString tones_;
     /**
-     * <code>bytes tones = 4;</code>
+     * <code>bytes tones = 6;</code>
      * @return The tones.
      */
     @java.lang.Override
@@ -274,11 +318,17 @@ public final class Music {
       if (!getCreatorBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, creator_);
       }
+      if (createTime_ != 0L) {
+        output.writeInt64(3, createTime_);
+      }
+      if (downloadCount_ != 0) {
+        output.writeInt32(4, downloadCount_);
+      }
       if (duration_ != 0) {
-        output.writeInt32(3, duration_);
+        output.writeInt32(5, duration_);
       }
       if (!tones_.isEmpty()) {
-        output.writeBytes(4, tones_);
+        output.writeBytes(6, tones_);
       }
       unknownFields.writeTo(output);
     }
@@ -295,13 +345,21 @@ public final class Music {
       if (!getCreatorBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, creator_);
       }
+      if (createTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, createTime_);
+      }
+      if (downloadCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, downloadCount_);
+      }
       if (duration_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, duration_);
+          .computeInt32Size(5, duration_);
       }
       if (!tones_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, tones_);
+          .computeBytesSize(6, tones_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -322,6 +380,10 @@ public final class Music {
           .equals(other.getTitle())) return false;
       if (!getCreator()
           .equals(other.getCreator())) return false;
+      if (getCreateTime()
+          != other.getCreateTime()) return false;
+      if (getDownloadCount()
+          != other.getDownloadCount()) return false;
       if (getDuration()
           != other.getDuration()) return false;
       if (!getTones()
@@ -341,6 +403,11 @@ public final class Music {
       hash = (53 * hash) + getTitle().hashCode();
       hash = (37 * hash) + CREATOR_FIELD_NUMBER;
       hash = (53 * hash) + getCreator().hashCode();
+      hash = (37 * hash) + CREATETIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCreateTime());
+      hash = (37 * hash) + DOWNLOADCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getDownloadCount();
       hash = (37 * hash) + DURATION_FIELD_NUMBER;
       hash = (53 * hash) + getDuration();
       hash = (37 * hash) + TONES_FIELD_NUMBER;
@@ -482,6 +549,10 @@ public final class Music {
 
         creator_ = "";
 
+        createTime_ = 0L;
+
+        downloadCount_ = 0;
+
         duration_ = 0;
 
         tones_ = com.google.protobuf.ByteString.EMPTY;
@@ -514,6 +585,8 @@ public final class Music {
         team.burden.music.api.protos.Music.Song result = new team.burden.music.api.protos.Music.Song(this);
         result.title_ = title_;
         result.creator_ = creator_;
+        result.createTime_ = createTime_;
+        result.downloadCount_ = downloadCount_;
         result.duration_ = duration_;
         result.tones_ = tones_;
         onBuilt();
@@ -571,6 +644,12 @@ public final class Music {
         if (!other.getCreator().isEmpty()) {
           creator_ = other.creator_;
           onChanged();
+        }
+        if (other.getCreateTime() != 0L) {
+          setCreateTime(other.getCreateTime());
+        }
+        if (other.getDownloadCount() != 0) {
+          setDownloadCount(other.getDownloadCount());
         }
         if (other.getDuration() != 0) {
           setDuration(other.getDuration());
@@ -759,9 +838,71 @@ public final class Music {
         return this;
       }
 
+      private long createTime_ ;
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @return The createTime.
+       */
+      @java.lang.Override
+      public long getCreateTime() {
+        return createTime_;
+      }
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @param value The createTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreateTime(long value) {
+        
+        createTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 createTime = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreateTime() {
+        
+        createTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int downloadCount_ ;
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @return The downloadCount.
+       */
+      @java.lang.Override
+      public int getDownloadCount() {
+        return downloadCount_;
+      }
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @param value The downloadCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownloadCount(int value) {
+        
+        downloadCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 downloadCount = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownloadCount() {
+        
+        downloadCount_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int duration_ ;
       /**
-       * <code>int32 duration = 3;</code>
+       * <code>int32 duration = 5;</code>
        * @return The duration.
        */
       @java.lang.Override
@@ -769,7 +910,7 @@ public final class Music {
         return duration_;
       }
       /**
-       * <code>int32 duration = 3;</code>
+       * <code>int32 duration = 5;</code>
        * @param value The duration to set.
        * @return This builder for chaining.
        */
@@ -780,7 +921,7 @@ public final class Music {
         return this;
       }
       /**
-       * <code>int32 duration = 3;</code>
+       * <code>int32 duration = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearDuration() {
@@ -792,7 +933,7 @@ public final class Music {
 
       private com.google.protobuf.ByteString tones_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes tones = 4;</code>
+       * <code>bytes tones = 6;</code>
        * @return The tones.
        */
       @java.lang.Override
@@ -800,7 +941,7 @@ public final class Music {
         return tones_;
       }
       /**
-       * <code>bytes tones = 4;</code>
+       * <code>bytes tones = 6;</code>
        * @param value The tones to set.
        * @return This builder for chaining.
        */
@@ -814,7 +955,7 @@ public final class Music {
         return this;
       }
       /**
-       * <code>bytes tones = 4;</code>
+       * <code>bytes tones = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearTones() {
@@ -2378,11 +2519,12 @@ public final class Music {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013Music.proto\"G\n\004Song\022\r\n\005title\030\001 \001(\t\022\017\n\007" +
-      "creator\030\002 \001(\t\022\020\n\010duration\030\003 \001(\005\022\r\n\005tones" +
-      "\030\004 \001(\014\"\035\n\005Tones\022\024\n\005tones\030\001 \003(\0132\005.Tone\"&\n" +
-      "\004Tone\022\014\n\004tone\030\001 \003(\005\022\020\n\010duration\030\002 \001(\005B\036\n" +
-      "\034team.burden.music.api.protosb\006proto3"
+      "\n\013Music.proto\"r\n\004Song\022\r\n\005title\030\001 \001(\t\022\017\n\007" +
+      "creator\030\002 \001(\t\022\022\n\ncreateTime\030\003 \001(\003\022\025\n\rdow" +
+      "nloadCount\030\004 \001(\005\022\020\n\010duration\030\005 \001(\005\022\r\n\005to" +
+      "nes\030\006 \001(\014\"\035\n\005Tones\022\024\n\005tones\030\001 \003(\0132\005.Tone" +
+      "\"&\n\004Tone\022\014\n\004tone\030\001 \003(\005\022\020\n\010duration\030\002 \001(\005" +
+      "B\036\n\034team.burden.music.api.protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2393,7 +2535,7 @@ public final class Music {
     internal_static_Song_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Song_descriptor,
-        new java.lang.String[] { "Title", "Creator", "Duration", "Tones", });
+        new java.lang.String[] { "Title", "Creator", "CreateTime", "DownloadCount", "Duration", "Tones", });
     internal_static_Tones_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Tones_fieldAccessorTable = new
