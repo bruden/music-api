@@ -19,9 +19,6 @@ start:
 	docker-compose -f ./docker-compose/docker-compose.yml up -d
 
 stop:
-	docker-compose -f ./docker-compose/docker-compose.yml down
-
-end:
 	docker-compose -f ./docker-compose/docker-compose.yml down -v
 
 .PHONY: docker
